@@ -29,6 +29,8 @@ public class ExcelServiceImpl implements ExcelService{
         int cellNum = 0;
         row = sheet.createRow(rowNum++);
         cell = row.createCell(cellNum++);
+        cell.setCellValue("번호");
+        cell = row.createCell(cellNum++);
         cell.setCellValue("아이디");
         cell = row.createCell(cellNum++);
         cell.setCellValue("이름");
@@ -46,6 +48,8 @@ public class ExcelServiceImpl implements ExcelService{
             row = sheet.createRow(rowNum++);
             cell = row.createCell(cellNum++);
             cell.setCellValue(num);
+            cell = row.createCell(cellNum++);
+            cell.setCellValue(member.getId());
             cell = row.createCell(cellNum++);
             cell.setCellValue(member.getName());
             cell = row.createCell(cellNum++);

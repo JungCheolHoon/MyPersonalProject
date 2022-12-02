@@ -1,4 +1,4 @@
-package com.naver.cjswovkdnj12.board.entity;
+package com.naver.cjswovkdnj12.email.entity;
 
 import lombok.Data;
 

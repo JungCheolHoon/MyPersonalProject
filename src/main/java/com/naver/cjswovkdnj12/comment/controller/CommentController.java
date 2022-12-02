@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.naver.cjswovkdnj12.board.entity.Board;
-import com.naver.cjswovkdnj12.board.service.BoardService;
 import com.naver.cjswovkdnj12.comment.entity.Comment2;
 import com.naver.cjswovkdnj12.comment.service.CommentService;
 import com.naver.cjswovkdnj12.security.config.SecurityUser;

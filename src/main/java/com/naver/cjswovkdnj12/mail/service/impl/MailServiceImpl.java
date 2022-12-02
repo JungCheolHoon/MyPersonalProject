@@ -8,7 +8,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.naver.cjswovkdnj12.board.entity.Mail;
+import com.naver.cjswovkdnj12.email.entity.Mail;
 import com.naver.cjswovkdnj12.mail.service.MailService;
 
 @Service

@@ -54,7 +54,7 @@ Coded by www.creative-tim.com
 						type="button">×</button>
 				</div>
 				<div class="modal-body">
-					<form th:action="@{/board/sendMail}" method="post"
+					<form th:action="@{/mail/sendMail}" method="post"
 						class="form-horizontal">
 						<div class="form-group">
 							<label class="col-lg-2 control-label">To</label>
@@ -101,7 +101,7 @@ Coded by www.creative-tim.com
 			<div class="logo">
 				<a href="https://www.creative-tim.com" class="simple-text logo-mini">
 
-				</a> <a href="/listBoard" class="simple-text logo-normal">My Boot
+				</a> <a href="/board/listBoard" class="simple-text logo-normal">My Boot
 					Board </a>
 			</div>
 			<div class="sidebar-wrapper">
@@ -135,7 +135,7 @@ Coded by www.creative-tim.com
 									class="navbar-toggler-bar bar3"></span>
 							</button>
 						</div>
-						<a class="navbar-brand" th:href="@{/listBoard}"> <font
+						<a class="navbar-brand" th:href="@{/board/listBoard}"> <font
 							color="red" sec:authentication="principal.member.name"></font> 님
 							게시판 입장을 환영합니다.
 						</a>
@@ -149,7 +149,7 @@ Coded by www.creative-tim.com
 					</button>
 					<div class="collapse navbar-collapse justify-content-end"
 						id="navigation">
-						<form th:action="@{/listBoard}" method="post">
+						<form th:action="@{/board/listBoard}" method="post">
 							<div class="input-group no-border">
 								<select class="form-control" name="searchCondition">
 									<option value="TITLE">제목</option>
@@ -228,7 +228,7 @@ Coded by www.creative-tim.com
 														<footer style="display: inline; text-align: right;">
 															<ul class="stats" style="font-size: 25px;">
 																<li><a style="text-decoration: none;"
-																	th:href="@{/listBoard}">글목록</a></li>
+																	th:href="@{/board/listBoard}">글목록</a></li>
 																<li><input
 																	style="border: 0px; background-color: white; color: #5CD1E5;"
 																	type="submit" value="게시글 등록"></li>

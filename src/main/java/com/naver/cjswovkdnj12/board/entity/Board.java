@@ -17,6 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.naver.cjswovkdnj12.comment.entity.Comment2;
+import com.naver.cjswovkdnj12.file.entity.FileEntity;
 import com.naver.cjswovkdnj12.member.entity.Member;
 
 import lombok.AllArgsConstructor;

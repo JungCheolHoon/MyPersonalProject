@@ -24,13 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity security) throws Exception {
-		security.authorizeHttpRequests().antMatchers("/","/system/**").permitAll();
-		security.authorizeHttpRequests().antMatchers("/","/member/**","/board/**").authenticated();
-		security.authorizeHttpRequests().antMatchers("/","/board/**","/admin/**").hasRole("ADMIN");
+		security.authorizeHttpRequests().antMatchers("/system/**").permitAll();
+		security.authorizeHttpRequests().antMatchers("/member/**","/board/**","/mail").authenticated();
+		security.authorizeHttpRequests().antMatchers("/admin/**").hasRole("ADMIN");
 		
 		security.csrf().disable();
 		
-		security.formLogin().loginPage("/system/login").defaultSuccessUrl("/listBoard",true);
+		security.formLogin().loginPage("/system/login").defaultSuccessUrl("/board/listBoard",true);
 		
 		security.exceptionHandling().accessDeniedPage("/system/accessDenied");
 		

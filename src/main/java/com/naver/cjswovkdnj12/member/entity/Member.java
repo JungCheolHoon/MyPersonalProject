@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.naver.cjswovkdnj12.board.entity.Board;
-import com.naver.cjswovkdnj12.comment.entity.Comment2;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

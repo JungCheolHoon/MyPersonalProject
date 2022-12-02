@@ -8,11 +8,10 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.naver.cjswovkdnj12.board.entity.Board;
-import com.naver.cjswovkdnj12.board.entity.FileEntity;
+import com.naver.cjswovkdnj12.file.entity.FileEntity;
 import com.naver.cjswovkdnj12.file.repository.FileRepository;
 import com.naver.cjswovkdnj12.file.service.FileService;
 

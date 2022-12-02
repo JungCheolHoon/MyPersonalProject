@@ -1,6 +1,6 @@
 package com.naver.cjswovkdnj12.mail.service;
 
-import com.naver.cjswovkdnj12.board.entity.Mail;
+import com.naver.cjswovkdnj12.email.entity.Mail;
 
 public interface MailService {
 

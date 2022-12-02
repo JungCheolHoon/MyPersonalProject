@@ -1,4 +1,4 @@
-package com.naver.cjswovkdnj12.board.entity;
+package com.naver.cjswovkdnj12.file.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -16,13 +16,13 @@ import com.querydsl.core.types.dsl.PathInits;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QFileEntity extends EntityPathBase<FileEntity> {
 
-    private static final long serialVersionUID = -1342689369L;
+    private static final long serialVersionUID = -1855237677L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QFileEntity fileEntity = new QFileEntity("fileEntity");
 
-    public final QBoard board;
+    public final com.naver.cjswovkdnj12.board.entity.QBoard board;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
@@ -50,7 +50,7 @@ public class QFileEntity extends EntityPathBase<FileEntity> {
 
     public QFileEntity(Class<? extends FileEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.board = inits.isInitialized("board") ? new QBoard(forProperty("board"), inits.get("board")) : null;
+        this.board = inits.isInitialized("board") ? new com.naver.cjswovkdnj12.board.entity.QBoard(forProperty("board"), inits.get("board")) : null;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.naver.cjswovkdnj12.board.entity;
+package com.naver.cjswovkdnj12.file.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.naver.cjswovkdnj12.board.entity.Board;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -53,33 +53,30 @@ Coded by www.creative-tim.com
 						type="button">×</button>
 				</div>
 				<div class="modal-body">
-					<form th:action="@{/board/sendMail}" method="post"
-						class="form-horizontal">
+					<form th:action="@{/mail/sendMail}" method="post" class="form-horizontal">
 						<div class="form-group">
 							<label class="col-lg-2 control-label">To</label>
 							<div class="col-lg-10" sec:authentication="principal.member.email">
-
+								
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-2 control-label">From</label>
 							<div class="col-lg-10">
-								<input name="receiver" type="text" placeholder="" id="cc"
-									class="form-control">
+								<input name="receiver" type="text" placeholder="" id="cc" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-2 control-label">Title</label>
 							<div class="col-lg-10">
-								<input type="text" name="mailTitle" placeholder=""
-									id="inputPassword1" class="form-control">
+								<input type="text" name="mailTitle" placeholder="" id="inputPassword1"
+									class="form-control">
 							</div>
 						</div>
-						<div class="form-group" style="display: inline;">
+						<div class="form-group" style="display:inline;">
 							<label class="col-lg-2 control-label">Message</label>
 							<div class="col-lg-10">
-								<textarea rows="10" cols="30" class="form-control" id=""
-									name="mailContent"></textarea>
+								<textarea rows="10" cols="30" class="form-control" id="" name="mailContent"></textarea>
 							</div>
 						</div>
 
@@ -100,21 +97,21 @@ Coded by www.creative-tim.com
 			<div class="logo">
 				<a href="https://www.creative-tim.com" class="simple-text logo-mini">
 
-				</a> <a href="/listBoard" class="simple-text logo-normal">My Boot
+				</a> <a href="/board/listBoard" class="simple-text logo-normal">My Boot
 					Board </a>
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
 					<li class="active "><a
-						th:href="@{/board/categoryBoard?category=공지}"> <i
+						th:href="@{/board/listBoard?category=공지}"> <i
 							class="nc-icon nc-bank"></i>
 							<p>공지</p>
 					</a></li>
-					<li><a th:href="@{/board/categoryBoard?category=자유}"> <i
+					<li><a th:href="@{/board/listBoard?category=자유}"> <i
 							class="nc-icon nc-diamond"></i>
 							<p>자유</p>
 					</a></li>
-					<li><a th:href="@{/board/categoryBoard?category=기타}"> <i
+					<li><a th:href="@{/board/listBoard?category=기타}"> <i
 							class="nc-icon nc-pin-3"></i>
 							<p>기타</p>
 					</a></li>
@@ -134,9 +131,9 @@ Coded by www.creative-tim.com
 									class="navbar-toggler-bar bar3"></span>
 							</button>
 						</div>
-						<a class="navbar-brand" th:href="@{/listBoard}"> <font
-							color="red" sec:authentication="principal.member.name"></font> 님
-							게시판 입장을 환영합니다.
+						<a class="navbar-brand" th:href="@{/board/listBoard}"> <font
+							color="red" sec:authentication="principal.member.name"></font>
+							님 게시판 입장을 환영합니다.
 						</a>
 					</div>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -148,12 +145,13 @@ Coded by www.creative-tim.com
 					</button>
 					<div class="collapse navbar-collapse justify-content-end"
 						id="navigation">
-						<form th:action="@{/listBoard}" method="post">
+						<form th:action="@{/board/listBoard}" method="post">
 							<div class="input-group no-border">
 								<select class="form-control" name="searchCondition">
 									<option value="TITLE">제목</option>
 									<option value="CONTENT">내용</option>
-								</select> <input type="text" name="searchKeyword" class="form-control"
+								</select>  
+								<input type="text" name="searchKeyword" class="form-control"
 									placeholder="Search...">
 								<div class="input-group-append">
 									<div class="input-group-text">
@@ -185,6 +183,9 @@ Coded by www.creative-tim.com
 					</div>
 				</div>
 			</nav>
+
+
+
 			<!-- End Navbar -->
 			<div class="content">
 				<div class="row">
@@ -214,21 +215,21 @@ Coded by www.creative-tim.com
 														<td th:text="${board.cnt}">
 													</tr>
 												</tbody>
+
 											</table>
 											<a th:href="@{/board/insertBoard}">새글 등록 </a>
 											<div style="text-align: center;">
 												<a th:if="${boardPage.startPage>boardPage.pageBlock}"
-													th:href="@{/listBoard(page=${boardPage.startPage-boardPage.pageBlock})}">Prev</a>
-												
+													th:href="@{/board/listBoard(page=${boardPage.startPage-boardPage.pageBlock})}">Prev</a>
 												<span th:if="${boardPage.endPage != 0}"
 													th:each="m : ${#numbers.sequence(boardPage.startPage,boardPage.endPage)}">
-													<a th:href="@{/listBoard(page=${m})}"
+													<a th:href="@{/board/listBoard(page=${m})}"
 													style="text-size: 15px; color: black;" th:text="${m}"></a>
 												</span> <a th:if="${boardPage.endPage<boardPage.totalPage}"
-													th:href="@{/listBoard(page=${boardPage.startPage+boardPage.pageBlock})}">Next</a>
+													th:href="@{/board/listBoard(page=${boardPage.startPage+boardPage.pageBlock})}">Next</a>
 											</div>
 										</div>
-
+										<div align="center" style="board: 1px solid gray"></div>
 									</div>
 								</div>
 							</div>
@@ -237,22 +238,20 @@ Coded by www.creative-tim.com
 				</div>
 			</div>
 
+			<footer class="footer footer-black  footer-white ">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="credits ml-auto">
+							<span class="copyright"> © <script>
+								document.write(new Date().getFullYear())
+							</script>, made with <i class="fa fa-heart heart"></i> by Creative Jung
+							</span>
+						</div>
+					</div>
+				</div>
+			</footer>
 		</div>
 	</div>
-	<footer class="footer"
-		style="position: absolute; bottom: 0; width: -webkit-fill-available;">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="credits ml-auto">
-					<script>
-						document.write(new Date().getFullYear())
-					</script>
-					, made with <i class="fa fa-heart heart"></i> by Creative Jung </span>
-				</div>
-			</div>
-		</div>
-	</footer>
-
 	<!--   Core JS Files   -->
 	<script src="../assets/js/core/jquery.min.js"></script>
 	<script src="../assets/js/core/popper.min.js"></script>

@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.naver.cjswovkdnj12.board.entity.FileEntity;
+import com.naver.cjswovkdnj12.file.entity.FileEntity;
 
 public interface FileRepository extends CrudRepository<FileEntity, Long>, QuerydslPredicateExecutor<FileEntity>{
 	@Query("DELETE FROM FileEntity F Where BOARD_ID = :keyword")

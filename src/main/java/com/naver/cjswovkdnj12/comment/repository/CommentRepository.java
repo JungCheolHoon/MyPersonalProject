@@ -9,7 +9,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.naver.cjswovkdnj12.board.entity.Board;
 import com.naver.cjswovkdnj12.comment.entity.Comment2;
 
 public interface CommentRepository extends CrudRepository<Comment2, Long>, QuerydslPredicateExecutor<Comment2>{

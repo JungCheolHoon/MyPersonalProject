@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.naver.cjswovkdnj12.board.entity.Board;
-import com.naver.cjswovkdnj12.board.entity.FileEntity;
 import com.naver.cjswovkdnj12.board.entity.QBoard;
 import com.naver.cjswovkdnj12.board.entity.Search;
 import com.naver.cjswovkdnj12.board.repository.BoardRepository;
 import com.naver.cjswovkdnj12.board.service.BoardService;
+import com.naver.cjswovkdnj12.file.entity.FileEntity;
 import com.naver.cjswovkdnj12.file.repository.FileRepository;
 import com.naver.cjswovkdnj12.member.entity.Member;
 import com.querydsl.core.BooleanBuilder;
@@ -26,19 +26,31 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardRepository boardRepo;
-	
+
 	@Autowired
 	private FileRepository fileRepo;
 
 	@Override
-	public Page<Board> listBoard(Search search, int page) {
+	public Page<Board> listBoard(Search search, int page, String category) {
 
 		BooleanBuilder builder = new BooleanBuilder();
 		QBoard qboard = QBoard.board;
-		if (search.getSearchCondition().equals("TITLE")) {
-			builder.and(qboard.title.like("%" + search.getSearchKeyword() + "%"));
-		} else if (search.getSearchCondition().equals("CONTENT")) {
-			builder.and(qboard.content.like("%" + search.getSearchKeyword() + "%"));
+//		String a = "a";
+//		builder.and(qboard.category.eq(a));
+		if (category == null) {
+			if (search.getSearchCondition().equals("TITLE")) {
+				builder.and(qboard.title.like("%" + search.getSearchKeyword() + "%"));
+			} else if (search.getSearchCondition().equals("CONTENT")) {
+				builder.and(qboard.content.like("%" + search.getSearchKeyword() + "%"));
+			}
+		} else {
+			if (search.getSearchCondition().equals("TITLE")) {
+				builder.and(qboard.title.like("%" + search.getSearchKeyword() + "%"));
+				builder.and(qboard.category.eq(category));
+			} else if (search.getSearchCondition().equals("CONTENT")) {
+				builder.and(qboard.content.like("%" + search.getSearchKeyword() + "%"));
+				builder.and(qboard.category.eq(category));
+			}
 		}
 		Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "seq");
 		return boardRepo.findAll(builder, pageable);
@@ -63,8 +75,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	@Transactional
 	public void updateBoard(Board board) {
-		for(FileEntity files:board.getFileList()) {
-			System.out.println("Q@@fileList"+files.getOrgNm());
+		for (FileEntity files : board.getFileList()) {
+			System.out.println("Q@@fileList" + files.getOrgNm());
 		}
 		fileRepo.deleteFile(String.valueOf(board.getSeq()));
 		boardRepo.save(board);
@@ -78,7 +90,7 @@ public class BoardServiceImpl implements BoardService {
 //		boardRepo.deleteBoard(String.valueOf(board.getSeq()));
 		boardRepo.delete(board);
 	}
-	
+
 	@Override
 	public List<Board> countBoardList(Member member) {
 		return boardRepo.countBoardList(member.getId());

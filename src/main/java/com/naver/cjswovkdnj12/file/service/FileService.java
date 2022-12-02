@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.naver.cjswovkdnj12.board.entity.Board;
-import com.naver.cjswovkdnj12.board.entity.FileEntity;
+import com.naver.cjswovkdnj12.file.entity.FileEntity;
 
 public interface FileService {
 	public FileEntity saveFile(MultipartFile files, Board board) throws IOException;

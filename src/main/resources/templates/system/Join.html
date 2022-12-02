@@ -161,25 +161,25 @@ body {
 		// ================ ID 유효성검사 ================ //
 
 		if (objId.value == '') {
-			alert("ID를 입력해주세요.");
+			alert("아이디를 입력해주세요.");
 			return false;
 		}
 		if (!RegExp.test(objId.value)) { //아이디 유효성검사
-			alert("ID는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.");
+			alert("아이디는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.");
 			return false;
 		}
 
 		// ================ PASSWORD 유효성검사 ===============//
 		if (objPwd.value == '') { // 비밀번호 입력여부 검사
-			alert("Password를 입력해주세요.");
+			alert("비밀번호를 입력해주세요.");
 			return false;
 		}
 		if (!RegExp.test(objPwd.value)) { //패스워드 유효성검사
-			alert("Password는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.");
+			alert("비밀번호는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.");
 			return false;
 		}
 		if (objPwd.value == objId.value) { //패스워드와 ID가 동일한지 검사
-			alert("Password는 ID와 동일하면 안됩니다.");
+			alert("비밀번호는 ID와 동일하면 안됩니다.");
 			return false;
 		}
 
@@ -205,7 +205,7 @@ body {
 			return false;
 		}
 		if (!n_RegExp.test(objName.value)) {
-			alert("특수문자,영어,숫자는 사용할수 없습니다. 한글만 입력하여주세요.");
+			alert("이름은 한글만 입력하여주세요.");
 			return false;
 		}
 		
