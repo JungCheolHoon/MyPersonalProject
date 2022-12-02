@@ -22,29 +22,29 @@ class MyBootBoardApplicationTests {
 	
 	@Autowired
 	private BoardRepository boardRepo;
-	
-	@Test
-	void asd() {
-		Member member1 = new Member();
-		member1.setId("testid");
-		member1.setPassword(encoder.encode("testpw"));
-		member1.setName("둘리");
-		member1.setAddress("부산광역시 해운대구");
-		member1.setAboutMe("나는 둘리입니다");
-		member1.setDetailAddress("센텀벤처타운");
-		member1.setEmail("killa@naver.com");
-		member1.setRole(Role.ROLE_MEMBER);
-		member1.setEnabled('y');
-		memberRepo.save(member1);
-		for(int i = 0; i <132; i++) {
-			Board board = new Board();
-			board.setMember(member1);
-			board.setCategory("공지");
-			board.setContent("야호"+i);
-			board.setTitle("test게시글"+i);
-			boardRepo.save(board);
-		}
-	}
+
+//	@Test
+//	void asd() {
+//		Member member1 = new Member();
+//		member1.setId("testid");
+//		member1.setPassword(encoder.encode("testpw"));
+//		member1.setName("둘리");
+//		member1.setAddress("부산광역시 해운대구");
+//		member1.setAboutMe("나는 둘리입니다");
+//		member1.setDetailAddress("센텀벤처타운");
+//		member1.setEmail("killa@naver.com");
+//		member1.setRole(Role.ROLE_MEMBER);
+//		member1.setEnabled('y');
+//		memberRepo.save(member1);
+//		for(int i = 0; i <132; i++) {
+//			Board board = new Board();
+//			board.setMember(member1);
+//			board.setCategory("공지");
+//			board.setContent("야호"+i);
+//			board.setTitle("test게시글"+i);
+//			boardRepo.save(board);
+//		}
+//	}
 	
 //	@Test
 //	void contextLoads() {

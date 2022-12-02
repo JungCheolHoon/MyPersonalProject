@@ -16,6 +16,7 @@ import com.naver.cjswovkdnj12.board.entity.QBoard;
 import com.naver.cjswovkdnj12.board.entity.Search;
 import com.naver.cjswovkdnj12.board.repository.BoardRepository;
 import com.naver.cjswovkdnj12.board.service.BoardService;
+import com.naver.cjswovkdnj12.comment.repository.CommentRepository;
 import com.naver.cjswovkdnj12.file.entity.FileEntity;
 import com.naver.cjswovkdnj12.file.repository.FileRepository;
 import com.naver.cjswovkdnj12.member.entity.Member;
@@ -29,14 +30,16 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private FileRepository fileRepo;
+	
+	@Autowired
+	private CommentRepository commentRepo;
 
 	@Override
 	public Page<Board> listBoard(Search search, int page, String category) {
 
 		BooleanBuilder builder = new BooleanBuilder();
 		QBoard qboard = QBoard.board;
-//		String a = "a";
-//		builder.and(qboard.category.eq(a));
+
 		if (category == null) {
 			if (search.getSearchCondition().equals("TITLE")) {
 				builder.and(qboard.title.like("%" + search.getSearchKeyword() + "%"));
@@ -75,9 +78,6 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	@Transactional
 	public void updateBoard(Board board) {
-		for (FileEntity files : board.getFileList()) {
-			System.out.println("Q@@fileList" + files.getOrgNm());
-		}
 		fileRepo.deleteFile(String.valueOf(board.getSeq()));
 		boardRepo.save(board);
 	}
@@ -86,9 +86,9 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional
 	@Modifying
 	public void deleteBoard(Board board) {
-		System.out.println("@@seq" + board.getSeq());
-//		boardRepo.deleteBoard(String.valueOf(board.getSeq()));
-		boardRepo.delete(board);
+		fileRepo.deleteFile(String.valueOf(board.getSeq()));
+		commentRepo.deleteBoardComment(String.valueOf(board.getSeq()));
+		boardRepo.deleteBoard(String.valueOf(board.getSeq()));
 	}
 
 	@Override

@@ -19,4 +19,9 @@ public interface CommentRepository extends CrudRepository<Comment2, Long>, Query
 	
 	@Query("SELECT c FROM Comment2 c Where WRITER = :keyword")
 	List<Comment2> countCommentList(@Param("keyword") String keyword);
+	
+	@Query("DELETE FROM Comment2 c Where BOARD_ID = :keyword")
+	@Modifying
+	@Transactional
+	void deleteBoardComment(@Param("keyword") String keyword);	
 }
